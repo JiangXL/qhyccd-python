@@ -17,42 +17,42 @@ class CONTROL_ID:
     CONTROL_OFFSET = ctypes.c_short(7)     # camera offset
     CONTROL_EXPOSURE = ctypes.c_short(8)   # expose time (us)
     CONTROL_SPEED = ctypes.c_short(9)      # transfer speed
-    CONTROL_TRANSFERBIT = ctypes.c_short(10)   # image depth bits
-    CONTROL_CHANNELS = ctypes.c_short(11)      # image channels
-    CONTROL_USBTRAFFIC = ctypes.c_short(12)    # hblank
-    CONTROL_ROWNOISERE = ctypes.c_short(13)    # row denoise
-    CONTROL_CURTEMP = ctypes.c_short(14)       # current cmos or ccd temprature
-    CONTROL_CURPWM = ctypes.c_short(15)        # current cool pwm
-    CONTROL_MANULPWM = ctypes.c_short(16)      # set the cool pwm
-    CONTROL_CFWPORT = ctypes.c_short(17)       # control camera color filter wheel port
-    CONTROL_COOLER = ctypes.c_short(18)        # check if camera has cooler
-    CONTROL_ST4PORT = ctypes.c_short(19)       # check if camera has st4port
+    CONTROL_TRANSFERBIT = ctypes.c_short(10)  # image depth bits
+    CONTROL_CHANNELS = ctypes.c_short(11)     # image channels
+    CONTROL_USBTRAFFIC = ctypes.c_short(12)   # hblank
+    CONTROL_ROWNOISERE = ctypes.c_short(13)   # row denoise
+    CONTROL_CURTEMP = ctypes.c_short(14)      # current cmos or ccd temprature
+    CONTROL_CURPWM = ctypes.c_short(15)       # current cool pwm
+    CONTROL_MANULPWM = ctypes.c_short(16)     # set the cool pwm
+    CONTROL_CFWPORT = ctypes.c_short(17)      # control camera color filter wheel port
+    CONTROL_COOLER = ctypes.c_short(18)       # check if camera has cooler
+    CONTROL_ST4PORT = ctypes.c_short(19)      # check if camera has st4port
     CAM_COLOR = ctypes.c_short(20)
-    CAM_BIN1X1MODE = ctypes.c_short(21)         # check if camera has bin1x1 mode
-    CAM_BIN2X2MODE = ctypes.c_short(22)         # check if camera has bin2x2 mode
-    CAM_BIN3X3MODE = ctypes.c_short(23)         # check if camera has bin3x3 mode
-    CAM_BIN4X4MODE = ctypes.c_short(24)         # check if camera has bin4x4 mode
-    CAM_MECHANICALSHUTTER = ctypes.c_short(25)  # mechanical shutter
-    CAM_TRIGER_INTERFACE = ctypes.c_short(26)   # triger
+    CAM_BIN1X1MODE = ctypes.c_short(21)       # check if camera has bin1x1 mode
+    CAM_BIN2X2MODE = ctypes.c_short(22)       # check if camera has bin2x2 mode
+    CAM_BIN3X3MODE = ctypes.c_short(23)       # check if camera has bin3x3 mode
+    CAM_BIN4X4MODE = ctypes.c_short(24)       # check if camera has bin4x4 mode
+    CAM_MECHANICALSHUTTER = ctypes.c_short(25)# mechanical shutter
+    CAM_TRIGER_INTERFACE = ctypes.c_short(26) # triger
     CAM_TECOVERPROTECT_INTERFACE = ctypes.c_short(27)  # tec overprotect
     CAM_SINGNALCLAMP_INTERFACE = ctypes.c_short(28)    # singnal clamp
     CAM_FINETONE_INTERFACE = ctypes.c_short(29)        # fine tone
-    CAM_SHUTTERMOTORHEATING_INTERFACE = ctypes.c_short(30)       # shutter motor heating
-    CAM_CALIBRATEFPN_INTERFACE = ctypes.c_short(31)              # calibrated frame
-    CAM_CHIPTEMPERATURESENSOR_INTERFACE = ctypes.c_short(32)     # chip temperaure sensor
-    CAM_USBREADOUTSLOWEST_INTERFACE = ctypes.c_short(33)         # usb readout slowest
+    CAM_SHUTTERMOTORHEATING_INTERFACE = ctypes.c_short(30)  # shutter motor heating
+    CAM_CALIBRATEFPN_INTERFACE = ctypes.c_short(31)         # calibrated frame
+    CAM_CHIPTEMPERATURESENSOR_INTERFACE = ctypes.c_short(32)# chip temperaure sensor
+    CAM_USBREADOUTSLOWEST_INTERFACE = ctypes.c_short(33)    # usb readout slowest
 
-    CAM_8BITS = ctypes.c_short(34)                               # 8bit depth
-    CAM_16BITS = ctypes.c_short(35)                              # 16bit depth
-    CAM_GPS = ctypes.c_short(36)                                 # check if camera has gps
+    CAM_8BITS = ctypes.c_short(34)                          # 8bit depth
+    CAM_16BITS = ctypes.c_short(35)                         # 16bit depth
+    CAM_GPS = ctypes.c_short(36)                            # check if camera has gps
 
-    CAM_IGNOREOVERSCAN_INTERFACE = ctypes.c_short(37)            # ignore overscan area
+    CAM_IGNOREOVERSCAN_INTERFACE = ctypes.c_short(37)       # ignore overscan area
 
     QHYCCD_3A_AUTOBALANCE = ctypes.c_short(38)
     QHYCCD_3A_AUTOEXPOSURE = ctypes.c_short(39)
     QHYCCD_3A_AUTOFOCUS = ctypes.c_short(40)
-    CONTROL_AMPV = ctypes.c_short(41)                            # ccd or cmos ampv
-    CONTROL_VCAM = ctypes.c_short(42)                            # Virtual Camera on off
+    CONTROL_AMPV = ctypes.c_short(41)                       # ccd or cmos ampv
+    CONTROL_VCAM = ctypes.c_short(42)                       # Virtual Camera on off
     CAM_VIEW_MODE = ctypes.c_short(43)
 
     CONTROL_CFWSLOTSNUM = ctypes.c_short(44)         # check CFW slots number
@@ -76,7 +76,7 @@ class CONTROL_ID:
     hasHardwareFrameCounter = ctypes.c_short(60)
     CONTROL_MAX_ID = ctypes.c_short(71)
     CAM_HUMIDITY = ctypes.c_short(72)
-    #check if camera has	 humidity sensor  20191021 LYL Unified humidity function
+    #check if camera has	 humidity sensor 
 
 class ERR:
     QHYCCD_READ_DIRECTLY = 0x2001
