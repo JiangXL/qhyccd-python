@@ -11,7 +11,7 @@ Basic functions to control qhyccd camera
 | Version | Commit
 | 0.1     | initial version @2020/07/02 hf
 
-#TODO: change stream mode
+#TODO: fail to change steammode inside sdk
 """
 
 class qhyccd():
@@ -21,7 +21,7 @@ class qhyccd():
         self.sdk.GetQHYCCDParam.restype = c_double
         self.sdk.OpenQHYCCD.restype = ctypes.POINTER(c_uint32)
         # ref: https://www.qhyccd.com/bbs/index.php?topic=6356.0
-        self.mode = 0 # Default stream mode is single frame, 0 for single frame
+        self.mode = 1 # Default stream mode is single frame, 0 for single frame
         self.bpp = c_uint(8) # 8 bit
         self.exposureMS = 100 # 100ms
         self.connect(self.mode)
@@ -31,10 +31,10 @@ class qhyccd():
         self.sdk.InitQHYCCDResource()
         self.sdk.ScanQHYCCD()
         type_char_array_32 = c_char*32
-        id = type_char_array_32()
-        self.sdk.GetQHYCCDId(c_int(0), id)    # open the first camera
-        print("Open camera:", id.value)
-        self.cam = self.sdk.OpenQHYCCD(id)
+        self.id = type_char_array_32()
+        self.sdk.GetQHYCCDId(c_int(0), self.id)    # open the first camera
+        print("Open camera:", self.id.value)
+        self.cam = self.sdk.OpenQHYCCD(self.id)
         self.sdk.SetQHYCCDStreamMode(self.cam, self.mode)  
         self.sdk.InitQHYCCD(self.cam)
 
