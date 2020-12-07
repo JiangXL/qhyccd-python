@@ -17,11 +17,12 @@ Basic functions to control qhyccd camera
 class qhyccd():
     def __init__(self):
         # create sdk handle
-        self.sdk= CDLL('/usr/local/lib/libqhyccd.so')
+        #self.sdk= CDLL('/usr/local/lib/libqhyccd.so')
+        self.sdk= CDLL('/usr/lib64/libqhyccd.so')
         self.sdk.GetQHYCCDParam.restype = c_double
         self.sdk.OpenQHYCCD.restype = ctypes.POINTER(c_uint32)
         # ref: https://www.qhyccd.com/bbs/index.php?topic=6356.0
-        self.mode = 0 # Default stream mode is single frame, 0 for single frame
+        self.mode = 1 # Default stream mode is single frame, 0 for single frame
         self.bpp = c_uint(8) # 8 bit
         self.exposureMS = 100 # 100ms
         self.connect(self.mode)
@@ -55,8 +56,8 @@ class qhyccd():
         self.SetExposure( self.exposureMS )
         self.SetBit(self.bpp.value)
         self.SetROI(0, 0, self.w.value, self.h.value)
-        self.sdk.SetQHYCCDParam(self.cam, CONTROL_ID.CONTROL_USBTRAFFIC, c_double(10))
-        #self.sdk.SetQHYCCDParam(self.cam, CONTROL_ID.CONTROL_TRANSFERBIT, self.bpp)
+        self.sdk.SetQHYCCDParam(self.cam, CONTROL_ID.CONTROL_USBTRAFFIC, c_double(50))
+        self.sdk.SetQHYCCDParam(self.cam, CONTROL_ID.CONTROL_TRANSFERBIT, self.bpp)
         # Maximum fan speed
         self.sdk.SetQHYCCDParam(self.cam, CONTROL_ID.CONTROL_MANULPWM, c_double(255))
         # Cooler to -15
@@ -108,7 +109,7 @@ class qhyccd():
 
     def BeginLive(self):
         """ Begin live mode"""
-        self.sdk.SetQHYCCDStreamMode(self.cam, 1)  # Live mode
+        #self.sdk.SetQHYCCDStreamMode(self.cam, 1)  # Live mode
         self.sdk.BeginQHYCCDLive(self.cam)
     
     def GetLiveFrame(self):
@@ -120,7 +121,7 @@ class qhyccd():
     def StopLive(self):
         """ Stop live mode, change to single frame """
         self.sdk.StopQHYCCDLive(self.cam)
-        self.sdk.SetQHYCCDStreamMode(self.cam, 0)  # Single Mode
+        #self.sdk.SetQHYCCDStreamMode(self.cam, 0)  # Single Mode
 
     """ Relase camera and close sdk """
     def close(self):
