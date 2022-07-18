@@ -17,12 +17,12 @@ Basic functions to control qhyccd camera
 class qhyccd():
     def __init__(self):
         # create sdk handle
-        #self.sdk= CDLL('/usr/local/lib/libqhyccd.so')
-        self.sdk= CDLL('/usr/lib64/libqhyccd.so')
+        self.sdk= CDLL('/usr/local/lib/libqhyccd.so')
+        #self.sdk= CDLL('/usr/lib64/libqhyccd.so')
         self.sdk.GetQHYCCDParam.restype = c_double
         self.sdk.OpenQHYCCD.restype = ctypes.POINTER(c_uint32)
         # ref: https://www.qhyccd.com/bbs/index.php?topic=6356.0
-        self.mode = 1 # Default stream mode is single frame, 0 for single frame
+        self.mode = 1 # set default mode to stream mode, otherwise set 0 for single frame mode
         self.bpp = c_uint(8) # 8 bit
         self.exposureMS = 100 # 100ms
         self.connect(self.mode)
